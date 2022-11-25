@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".UpdateLandmarkActivity">
+
+    <!--Edit text to enter course name-->
+    <EditText
+        android:id="@+id/idEdtLandmarkName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Enter course Name" />
+
+    <!--edit text to enter course duration-->
+    <EditText
+        android:id="@+id/idEdtLandmarkLongitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Enter Course Duration" />
+
+    <!--edit text to display landmark latitude-->
+    <EditText
+        android:id="@+id/idEdtLandmarkLatitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Enter Landmark Latitude" />
+
+    <!--edit text for landmark longitude-->
+    <EditText
+        android:id="@+id/idEdtLandmarkAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Enter Landmark Address" />
+
+    <!--button for updating our landmark-->
+    <Button
+        android:id="@+id/idBtnUpdateLandmark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Update Landmark"
+        android:textAllCaps="false" />
+
+    <!--button for deleting our course-->
+    <Button
+        android:id="@+id/idBtnDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Delete Landmark"
+        android:textAllCaps="false" />
+
+
+</LinearLayout>

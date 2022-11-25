@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/idListView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!--Edit text to enter landmark name-->
+    <EditText
+        android:id="@+id/idEdtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Enter Name" />
+
+    <!--edit text to enter landmark latitude-->
+    <EditText
+        android:id="@+id/idEdtLongitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Enter Latitude" />
+
+    <!--edit text to display landmark longitude-->
+    <EditText
+        android:id="@+id/idEdtLatitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Enter Longitude" />
+
+    <!--edit text for landmark address-->
+    <EditText
+        android:id="@+id/idEdtAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Enter Address" />
+
+    <!--button for adding new landmark-->
+    <Button
+        android:id="@+id/idBtnAddLandmark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Add Landmark"
+        android:textAllCaps="false" />
+
+    <!--new button for opening our landmark list activity-->
+    <Button
+        android:id="@+id/idBtnReadLandmark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Saved Landmarks"
+        android:textAllCaps="false" />
+
+    <ListView
+        android:id="@+id/idListViewAPI"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
