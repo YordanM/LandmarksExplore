@@ -31,7 +31,7 @@
 
             <!--text view for our landmark latitude-->
             <TextView
-                android:id="@+id/idTVLandmarkAddress"
+                android:id="@+id/idTVLandmarkLatitude"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -54,7 +54,7 @@
 
         <!--text view for our landmark address-->
         <TextView
-            android:id="@+id/idTVLandmarkLatitude"
+            android:id="@+id/idTVLandmarkAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

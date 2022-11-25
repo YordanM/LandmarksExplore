@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private Button addLandmarkBtn, readLandmarkBtn;
     private DBHandler dbHandler;
     private ArrayList<LandmarkModal> landmarks;
+    private LandmarkRVAdapter landmarkRVAdapter;
+    private RecyclerView landmarksRV;
     private ListView listView;
 
     @SuppressLint({"MissingInflatedId", "MissingPermission"})
@@ -43,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         readLandmarkBtn = findViewById(R.id.idBtnReadLandmark);
         listView = findViewById(R.id.idListViewAPI);
 
+
         try {
             landmarks = PlacesLocation.LandmarkList();
         } catch (IOException e) {
@@ -51,7 +55,16 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        LandmarkAdapterAPI adapterAPI;
+        adapterAPI = new LandmarkAdapterAPI(this, 0, landmarks);
+        listView.setAdapter(adapterAPI);
 
+
+        /*landmarkRVAdapter = new LandmarkRVAdapter(landmarks, this);
+        landmarksRV = findViewById(R.id.idRVLandmarks);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+        landmarksRV.setLayoutManager(linearLayoutManager);
+        landmarksRV.setAdapter(landmarkRVAdapter);*/
 
         // creating a new dbhandler class
         // and passing our context to it.
@@ -95,7 +108,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
     }
-
 }

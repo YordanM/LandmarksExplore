@@ -59,8 +59,8 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL(query);
     }
 
-    // this method is use to add new course to our sqlite database.
-    public void addNewCourse(String courseName, String courseDuration, String courseDescription, String courseTracks) {
+    // this method is use to add new landmark to our sqlite database.
+    public void addNewCourse(String landmarkName, String landmarkLatitude, String landmarkLongitude, String landmarkAddress) {
 
         // on below line we are creating a variable for
         // our sqlite database and calling writable method
@@ -73,10 +73,10 @@ public class DBHandler extends SQLiteOpenHelper {
 
         // on below line we are passing all values
         // along with its key and value pair.
-        values.put(NAME_COL, courseName);
-        values.put(LATITUDE_COL, courseDuration);
-        values.put(LONGITUDE_COL, courseDescription);
-        values.put(ADDRESS_COL, courseTracks);
+        values.put(NAME_COL, landmarkName);
+        values.put(LATITUDE_COL, landmarkLatitude);
+        values.put(LONGITUDE_COL, landmarkLongitude);
+        values.put(ADDRESS_COL, landmarkAddress);
 
         // after adding all values we are passing
         // content values to our table.
