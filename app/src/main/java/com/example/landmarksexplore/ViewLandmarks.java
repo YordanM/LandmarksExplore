@@ -12,7 +12,7 @@ public class ViewLandmarks extends AppCompatActivity {
 
     // creating variables for our array list,
     // dbhandler, adapter and recycler view.
-    private ArrayList<LandmarkModal> landmarkModalArrayList;
+    private ArrayList<Landmark> landmarkArrayList;
     private DBHandler dbHandler;
     private LandmarkRVAdapter landmarkRVAdapter;
     private RecyclerView landmarksRV;
@@ -23,15 +23,15 @@ public class ViewLandmarks extends AppCompatActivity {
         setContentView(R.layout.activity_view_landmarks);
 
         // initializing our all variables.
-        landmarkModalArrayList = new ArrayList<>();
+        landmarkArrayList = new ArrayList<>();
         dbHandler = new DBHandler(ViewLandmarks.this);
 
         // getting our landmarks array
         // list from db handler class.
-        landmarkModalArrayList = dbHandler.readLandmarks();
+        landmarkArrayList = dbHandler.readLandmarks();
 
         // on below line passing our array lost to our adapter class.
-        landmarkRVAdapter = new LandmarkRVAdapter(landmarkModalArrayList, ViewLandmarks.this);
+        landmarkRVAdapter = new LandmarkRVAdapter(landmarkArrayList, ViewLandmarks.this);
         landmarksRV = findViewById(R.id.idRVLandmarks);
 
         // setting layout manager for our recycler view.

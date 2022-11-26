@@ -15,12 +15,12 @@ import java.util.ArrayList;
 public class LandmarkRVAdapter extends RecyclerView.Adapter<LandmarkRVAdapter.ViewHolder> {
 
     // variable for our array list and context
-    private ArrayList<LandmarkModal> landmarkModalArrayList;
+    private ArrayList<Landmark> landmarkArrayList;
     private Context context;
 
     // constructor
-    public LandmarkRVAdapter(ArrayList<LandmarkModal> landmarkModalArrayList, Context context) {
-        this.landmarkModalArrayList = landmarkModalArrayList;
+    public LandmarkRVAdapter(ArrayList<Landmark> landmarkArrayList, Context context) {
+        this.landmarkArrayList = landmarkArrayList;
         this.context = context;
     }
 
@@ -37,7 +37,7 @@ public class LandmarkRVAdapter extends RecyclerView.Adapter<LandmarkRVAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // on below line we are setting data
         // to our views of recycler view item.
-            LandmarkModal modal = landmarkModalArrayList.get(position);
+            Landmark modal = landmarkArrayList.get(position);
             holder.landmarkNameTV.setText(modal.getName());
             holder.landmarkLatitudeTV.setText(modal.getLatitude());
             holder.landmarkLongitudeTV.setText(modal.getLongitude());
@@ -67,7 +67,7 @@ public class LandmarkRVAdapter extends RecyclerView.Adapter<LandmarkRVAdapter.Vi
     @Override
     public int getItemCount() {
         // returning the size of our array list
-        return landmarkModalArrayList.size();
+        return landmarkArrayList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

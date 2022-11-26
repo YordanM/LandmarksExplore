@@ -1,11 +1,6 @@
 package com.example.landmarksexplore;
 
-import android.app.AppComponentFactory;
-import android.graphics.PointF;
 import android.os.StrictMode;
-import android.util.Log;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,11 +14,11 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class PlacesLocation {
-    public static ArrayList<LandmarkModal> LandmarkList() throws IOException, JSONException {
+    public static ArrayList<Landmark> LandmarkList() throws IOException, JSONException {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        ArrayList<LandmarkModal> result =  new ArrayList<>();
+        ArrayList<Landmark> result =  new ArrayList<>();
         String str;
         JSONArray places;
 
@@ -64,7 +59,7 @@ public class PlacesLocation {
                 id = place.getString("place_id");
                 address = place.getString("vicinity");
 
-                LandmarkModal lm = new LandmarkModal(name, latitude, longitude, address);
+                Landmark lm = new Landmark(name, latitude, longitude, address);
 
                 result.add(lm);
             }

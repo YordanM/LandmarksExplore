@@ -88,7 +88,7 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     // we have created a new method for reading all the landmarks.
-    public ArrayList<LandmarkModal> readLandmarks() {
+    public ArrayList<Landmark> readLandmarks() {
         // on below line we are creating a
         // database for reading our database.
         SQLiteDatabase db = this.getReadableDatabase();
@@ -97,13 +97,13 @@ public class DBHandler extends SQLiteOpenHelper {
         Cursor cursorLandmarks = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
 
         // on below line we are creating a new array list.
-        ArrayList<LandmarkModal> landmarkModalArrayList = new ArrayList<>();
+        ArrayList<Landmark> landmarkArrayList = new ArrayList<>();
 
         // moving our cursor to first position.
         if (cursorLandmarks.moveToFirst()) {
             do {
                 // on below line we are adding the data from cursor to our array list.
-                landmarkModalArrayList.add(new LandmarkModal(cursorLandmarks.getString(1),
+                landmarkArrayList.add(new Landmark(cursorLandmarks.getString(1),
                         cursorLandmarks.getString(4),
                         cursorLandmarks.getString(2),
                         cursorLandmarks.getString(3)));
@@ -113,7 +113,7 @@ public class DBHandler extends SQLiteOpenHelper {
         // at last closing our cursor
         // and returning our array list.
         cursorLandmarks.close();
-        return landmarkModalArrayList;
+        return landmarkArrayList;
     }
 
     // below is the method for updating our landmarks

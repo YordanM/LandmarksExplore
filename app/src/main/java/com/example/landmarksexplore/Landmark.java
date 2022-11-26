@@ -1,6 +1,6 @@
 package com.example.landmarksexplore;
 
-public class LandmarkModal {
+public class Landmark {
 
     // variables for our name,
     // latitude, longitude and address, id.
@@ -52,7 +52,7 @@ public class LandmarkModal {
     }
 
     // constructor
-    public LandmarkModal(String name, String latitude, String longitude, String address) {
+    public Landmark(String name, String latitude, String longitude, String address) {
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;

@@ -4,10 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,10 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText nameEdt, latitudeEdt, longitudeEdt, addressEdt;
     private Button addLandmarkBtn, readLandmarkBtn;
     private DBHandler dbHandler;
-    private ArrayList<LandmarkModal> landmarks;
-    private LandmarkRVAdapter landmarkRVAdapter;
+    private ArrayList<Landmark> landmarks;
     private RecyclerView landmarksRV;
-    private ListView listView;
 
     @SuppressLint({"MissingInflatedId", "MissingPermission"})
     @Override

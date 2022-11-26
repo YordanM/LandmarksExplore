@@ -14,11 +14,11 @@ import java.util.ArrayList;
 // Extends the Adapter class to RecyclerView.Adapter
 // and implement the unimplemented methods
 public class LandmarkRVAdapterAPI extends RecyclerView.Adapter<LandmarkRVAdapterAPI.ViewHolder> {
-    ArrayList<LandmarkModal> places;
+    ArrayList<Landmark> places;
     Context context;
 
     // Constructor for initialization
-    public LandmarkRVAdapterAPI(Context context, ArrayList<LandmarkModal> places) {
+    public LandmarkRVAdapterAPI(Context context, ArrayList<Landmark> places) {
         this.context = context;
         this.places = places;
     }
@@ -41,7 +41,7 @@ public class LandmarkRVAdapterAPI extends RecyclerView.Adapter<LandmarkRVAdapter
 
         // on below line we are setting data
         // to our views of recycler view item.
-        LandmarkModal modal = places.get(position);
+        Landmark modal = places.get(position);
         holder.landmarkNameTV.setText(modal.getName());
         holder.landmarkLatitudeTV.setText(modal.getLatitude());
         holder.landmarkLongitudeTV.setText(modal.getLongitude());
