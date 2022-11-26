@@ -44,8 +44,6 @@ public class MainActivity extends AppCompatActivity {
         addressEdt = findViewById(R.id.idEdtAddress);
         addLandmarkBtn = findViewById(R.id.idBtnAddLandmark);
         readLandmarkBtn = findViewById(R.id.idBtnReadLandmark);
-        listView = findViewById(R.id.idListViewAPI);
-
 
         try {
             landmarks = PlacesLocation.LandmarkList();
@@ -55,16 +53,11 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        LandmarkAdapterAPI adapterAPI;
-        adapterAPI = new LandmarkAdapterAPI(this, 0, landmarks);
-        listView.setAdapter(adapterAPI);
-
-
-        /*landmarkRVAdapter = new LandmarkRVAdapter(landmarks, this);
-        landmarksRV = findViewById(R.id.idRVLandmarks);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+        landmarksRV = (RecyclerView) findViewById(R.id.recycleView);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         landmarksRV.setLayoutManager(linearLayoutManager);
-        landmarksRV.setAdapter(landmarkRVAdapter);*/
+        LandmarkRVAdapterAPI adapterAPI = new LandmarkRVAdapterAPI(MainActivity.this, landmarks);
+        landmarksRV.setAdapter(adapterAPI);
 
         // creating a new dbhandler class
         // and passing our context to it.
