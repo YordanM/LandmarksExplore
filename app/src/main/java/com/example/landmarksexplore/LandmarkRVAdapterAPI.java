@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,13 +15,15 @@ import java.util.ArrayList;
 // Extends the Adapter class to RecyclerView.Adapter
 // and implement the unimplemented methods
 public class LandmarkRVAdapterAPI extends RecyclerView.Adapter<LandmarkRVAdapterAPI.ViewHolder> {
-    ArrayList<Landmark> places;
+    ArrayList<Landmark> landmarkArrayList;
     Context context;
+    static private DBHandler dbHandler;
 
     // Constructor for initialization
-    public LandmarkRVAdapterAPI(Context context, ArrayList<Landmark> places) {
+    public LandmarkRVAdapterAPI(Context context, ArrayList<Landmark> landmarkArrayList) {
         this.context = context;
-        this.places = places;
+        this.landmarkArrayList = landmarkArrayList;
+        dbHandler = new DBHandler(context);
     }
 
     @NonNull
@@ -41,7 +44,7 @@ public class LandmarkRVAdapterAPI extends RecyclerView.Adapter<LandmarkRVAdapter
 
         // on below line we are setting data
         // to our views of recycler view item.
-        Landmark modal = places.get(position);
+        Landmark modal = landmarkArrayList.get(position);
         holder.landmarkNameTV.setText(modal.getName());
         holder.landmarkLatitudeTV.setText(modal.getLatitude());
         holder.landmarkLongitudeTV.setText(modal.getLongitude());
@@ -51,18 +54,13 @@ public class LandmarkRVAdapterAPI extends RecyclerView.Adapter<LandmarkRVAdapter
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // on below line we are calling a method to add new
+                // landmark to sqlite data and pass all our values to it.
+                dbHandler.addNewCourse(modal.getName(), modal.getLatitude(), modal.getLongitude(), modal.getAddress());
 
-                // on below line we are calling an intent.
-                Intent i = new Intent(context, UpdateLandmarkActivity.class);
+                // after adding the data we are displaying a toast message.
+                Toast.makeText(context, "Landmark has been added.", Toast.LENGTH_SHORT).show();
 
-                // below we are passing all our values.
-                i.putExtra("name", modal.getName());
-                i.putExtra("latitude", modal.getLatitude());
-                i.putExtra("longitude", modal.getLongitude());
-                i.putExtra("address", modal.getAddress());
-
-                // starting our activity.
-                context.startActivity(i);
             }
         });
     }
@@ -70,7 +68,7 @@ public class LandmarkRVAdapterAPI extends RecyclerView.Adapter<LandmarkRVAdapter
     @Override
     public int getItemCount() {
         // returning the size of our array list
-        return places.size();
+        return landmarkArrayList.size();
     }
 
     // Initializing the Views

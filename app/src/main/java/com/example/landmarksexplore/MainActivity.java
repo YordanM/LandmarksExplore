@@ -21,9 +21,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     // creating variables for our edittext, button and dbhandler
-    private EditText nameEdt, latitudeEdt, longitudeEdt, addressEdt;
-    private Button addLandmarkBtn, readLandmarkBtn;
-    private DBHandler dbHandler;
+    private Button readLandmarkBtn;
     private ArrayList<Landmark> landmarks;
     private RecyclerView landmarksRV;
 
@@ -33,12 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // initializing all our variables.
-        nameEdt = findViewById(R.id.idEdtName);
-        latitudeEdt = findViewById(R.id.idEdtLatitude);
-        longitudeEdt = findViewById(R.id.idEdtLongitude);
-        addressEdt = findViewById(R.id.idEdtAddress);
-        addLandmarkBtn = findViewById(R.id.idBtnAddLandmark);
+        // initializing our variables.
         readLandmarkBtn = findViewById(R.id.idBtnReadLandmark);
 
         try {
@@ -49,46 +42,15 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        //listing our landmarks
         landmarksRV = (RecyclerView) findViewById(R.id.recycleView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         landmarksRV.setLayoutManager(linearLayoutManager);
         LandmarkRVAdapterAPI adapterAPI = new LandmarkRVAdapterAPI(MainActivity.this, landmarks);
         landmarksRV.setAdapter(adapterAPI);
 
-        // creating a new dbhandler class
-        // and passing our context to it.
-        dbHandler = new DBHandler(MainActivity.this);
 
-        // below line is to add on click listener for our add landmark button.
-        addLandmarkBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                // below line is to get data from all edit text fields.
-                String Name = nameEdt.getText().toString();
-                String latitude = latitudeEdt.getText().toString();
-                String longitude = longitudeEdt.getText().toString();
-                String address = addressEdt.getText().toString();
-
-                // validating if the text fields are empty or not.
-                if (Name.isEmpty() || latitude.isEmpty() || longitude.isEmpty() || address.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Please enter all the data...", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                // on below line we are calling a method to add new
-                // landmark to sqlite data and pass all our values to it.
-                dbHandler.addNewCourse(Name, longitude, address, latitude);
-
-                // after adding the data we are displaying a toast message.
-                Toast.makeText(MainActivity.this, "Landmark has been added.", Toast.LENGTH_SHORT).show();
-                nameEdt.setText("");
-                longitudeEdt.setText("");
-                latitudeEdt.setText("");
-                addressEdt.setText("");
-            }
-        });
-
+        //with this we are going to ViewLandmarks activity to see all saved landmarks
         readLandmarkBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
