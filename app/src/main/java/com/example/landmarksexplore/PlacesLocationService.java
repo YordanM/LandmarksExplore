@@ -13,7 +13,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class PlacesLocation {
+public class PlacesLocationService {
     public static ArrayList<Landmark> LandmarkList() throws IOException, JSONException {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -22,7 +22,8 @@ public class PlacesLocation {
         String str;
         JSONArray places;
 
-        String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=42.136097%2C24.742168&radius=1500&type=bar&key=AIzaSyCWatdWW15FDBuNpNXtkDuLU18RWJfpGt0";
+        //getting out api link
+        String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=42.136097%2C24.742168&radius=2000&type=hotel&key=AIzaSyCWatdWW15FDBuNpNXtkDuLU18RWJfpGt0";
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url(url)
